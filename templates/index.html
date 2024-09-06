@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO₂ Waste Calculator</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Employee CO₂ Waste Calculator</h1>
+        <form id="co2Form">
+            <label for="employeeName">Employee Name:</label>
+            <input type="text" id="employeeName" name="employeeName" required>
+            
+            <label for="co2Waste">CO₂ Waste (kg):</label>
+            <input type="number" id="co2Waste" name="co2Waste" required>
+
+            <button type="submit">Calculate</button>
+        </form>
+        <p id="result"></p>
+
+        <!-- New Button to Redirect to Employees Page -->
+        <button id="viewEmployeesBtn">View All Employees</button>
+    </div>
+
+    <script src="../static/app.js"></script>
+</body>
+</html>
