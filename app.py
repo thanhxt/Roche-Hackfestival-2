@@ -7,6 +7,12 @@ CORS(app)
 # Mock-Datenbanken
 employees_main = [ ]
 
+employees_m1 = []
+
+employees_m2 = []
+
+employees_m3 = []
+
 employees_day2= [
     {'id': 1, 'name': 'John Doe', 'food_choice': 'A', 'distance': 230, 'transport_choice': 'car', 'room_id': '15', 'roomnumber': 2, 'roomduration': 1},
     {'id': 2, 'name': 'Long Han', 'food_choice': 'A', 'distance': 730, 'transport_choice': 'train', 'room_id': '30', 'roomnumber': 10, 'roomduration': 2},
@@ -107,84 +113,85 @@ def calc_emi_byRoom(room_id, roomnumber, roomduration):
     emission_per_person = room_emissions.get(room_id, 0)
     return emission_per_person * roomnumber * roomduration
 
+# Trigger-Function-Day1
 # Route, um die CO₂-Emissionen zu berechnen und in der "Datenbank" zu speichern
 @app.route('/calculate', methods=['POST'])
 def calculate():
-    day = 2
-    for new_emp in employees_day2:
-    
-        # Berechnungen
-        food_emission = calc_emi_byFood(new_emp['food_choice'])
-        transport_emission = calc_emi_byTransport(new_emp['distance'], new_emp['transport_choice'])
-        room_emission = calc_emi_byRoom(new_emp['room_id'], new_emp['roomnumber'], new_emp['roomduration'])
+    if employees_m1 == []:
+        for new_emp in employees_day2:
         
-        # Gesamtemission berechnen
-        total_emission = food_emission + transport_emission + room_emission
-        
-        # Füge den berechneten Mitarbeiter zu employees_main hinzu
-        new_employee = {
-                'id': len(employees_main) + 1,
-                'name': new_emp['name'],
-                'transport_emission': transport_emission,
-                'food_emission': food_emission,
-                'room_emi': room_emission,
-                'sum_emi': total_emission
-            }
-        employees_main.append(new_employee)
+            # Berechnungen
+            food_emission = calc_emi_byFood(new_emp['food_choice'])
+            transport_emission = calc_emi_byTransport(new_emp['distance'], new_emp['transport_choice'])
+            room_emission = calc_emi_byRoom(new_emp['room_id'], new_emp['roomnumber'], new_emp['roomduration'])
+            
+            # Gesamtemission berechnen
+            total_emission = food_emission + transport_emission + room_emission
+            
+            # Füge den berechneten Mitarbeiter zu employees_main hinzu
+            new_employee = {
+                    'id': len(employees_m1) + 1,
+                    'name': new_emp['name'],
+                    'transport_emission': transport_emission,
+                    'food_emission': food_emission,
+                    'room_emi': room_emission,
+                    'sum_emi': total_emission
+                }
+            employees_m1.append(new_employee)
 
-    return jsonify({'status': 'success', 'employees_main': employees_main})
+    return jsonify({'status': 'success', 'employees_m1': employees_m1})
 
 @app.route('/calculate', methods=['POST'])
 def calculate2():
-    day = 3
-    for new_emp in employees_day3:
-    
-        # Berechnungen
-        food_emission = calc_emi_byFood(new_emp['food_choice'])
-        transport_emission = calc_emi_byTransport(new_emp['distance'], new_emp['transport_choice'])
-        room_emission = calc_emi_byRoom(new_emp['room_id'], new_emp['roomnumber'], new_emp['roomduration'])
+    if employees_m2 == []:
+        for new_emp in employees_day3:
         
-        # Gesamtemission berechnen
-        total_emission = food_emission + transport_emission + room_emission
-        
-        # Füge den berechneten Mitarbeiter zu employees_main hinzu
-        new_employee = {
-                'id': len(employees_main) + 1,
-                'name': new_emp['name'],
-                'transport_emission': transport_emission,
-                'food_emission': food_emission,
-                'room_emi': room_emission,
-                'sum_emi': total_emission
-            }
-        employees_main.append(new_employee)
+            # Berechnungen
+            food_emission = calc_emi_byFood(new_emp['food_choice'])
+            transport_emission = calc_emi_byTransport(new_emp['distance'], new_emp['transport_choice'])
+            room_emission = calc_emi_byRoom(new_emp['room_id'], new_emp['roomnumber'], new_emp['roomduration'])
+            
+            # Gesamtemission berechnen
+            total_emission = food_emission + transport_emission + room_emission
+            
+            # Füge den berechneten Mitarbeiter zu employees_main hinzu
+            new_employee = {
+                    'id': len(employees_m2) + 1,
+                    'name': new_emp['name'],
+                    'transport_emission': transport_emission,
+                    'food_emission': food_emission,
+                    'room_emi': room_emission,
+                    'sum_emi': total_emission
+                }
+            employees_m2.append(new_employee)
 
-    return jsonify({'status': 'success', 'employees_main': employees_main})
+    return jsonify({'status': 'success', 'employees_m2': employees_m2})
 
 @app.route('/calculate', methods=['POST'])
 def calculate3():
-    print('day = 4')
-    for new_emp in employees_day4:
-    
-        # Berechnungen
-        food_emission = calc_emi_byFood(new_emp['food_choice'])
-        transport_emission = calc_emi_byTransport(new_emp['distance'], new_emp['transport_choice'])
-        room_emission = calc_emi_byRoom(new_emp['room_id'], new_emp['roomnumber'], new_emp['roomduration'])
+    if employees_m3 == []:
+        for new_emp in employees_day4:
         
-        # Gesamtemission berechnen
-        total_emission = food_emission + transport_emission + room_emission
-        
-        # Füge den berechneten Mitarbeiter zu employees_main hinzu
-        new_employee = {
-                'id': len(employees_main) + 1,
-                'name': new_emp['name'],
-                'transport_emission': transport_emission,
-                'food_emission': food_emission,
-                'room_emi': room_emission,
-                'sum_emi': total_emission
-            }
-        employees_main.append(new_employee)
+            # Berechnungen
+            food_emission = calc_emi_byFood(new_emp['food_choice'])
+            transport_emission = calc_emi_byTransport(new_emp['distance'], new_emp['transport_choice'])
+            room_emission = calc_emi_byRoom(new_emp['room_id'], new_emp['roomnumber'], new_emp['roomduration'])
+            
+            # Gesamtemission berechnen
+            total_emission = food_emission + transport_emission + room_emission
+            
+            # Füge den berechneten Mitarbeiter zu employees_main hinzu
+            new_employee = {
+                    'id': len(employees_m3) + 1,
+                    'name': new_emp['name'],
+                    'transport_emission': transport_emission,
+                    'food_emission': food_emission,
+                    'room_emi': room_emission,
+                    'sum_emi': total_emission
+                }
+            employees_m3.append(new_employee)
 
-    return jsonify({'status': 'success', 'employees_main': employees_main})
+    return jsonify({'status': 'success', 'employees_m3': employees_m3})
     
 
 @app.route('/trigger-function', methods=['POST'])
@@ -195,10 +202,51 @@ def trigger_function():
         'name': employees_main,
     })
 
+@app.route('/trigger-function-day1', methods=['POST'])
+def trigger_functionDay1():
+    # Do some backend processing (e.g., update the database, compute emissions)
+    calculate()
+    return jsonify({
+        'name': employees_m1,
+    })
+
+
+@app.route('/trigger-function-day2', methods=['POST'])
+def trigger_functionDay2():
+    # Do some backend processing (e.g., update the database, compute emissions)
+    calculate2()
+    return jsonify({
+        'name': employees_m2,
+    })
+
+@app.route('/trigger-function-day3', methods=['POST'])
+def trigger_functionDay3():
+    # Do some backend processing (e.g., update the database, compute emissions)
+    calculate3()
+    return jsonify({
+        'name': employees_m3,
+    })
+
+
+
 # Route, um alle CO₂-Emissionsdaten der Mitarbeiter abzurufen
 @app.route('/employees', methods=['GET'])
 def get_employees_main():
     return jsonify(employees_main)
+
+@app.route('/day1', methods=['GET'])
+def get_employees_m1():
+    return jsonify(employees_m1)
+
+@app.route('/day2', methods=['GET'])
+def get_employees_m2():
+    return jsonify(employees_m2)
+
+@app.route('/day3', methods=['GET'])
+def get_employees_m3():
+    return jsonify(employees_m3)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

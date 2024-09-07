@@ -76,10 +76,10 @@ document.getElementById('fetchingEmployees').addEventListener('click', function(
     .catch(error => console.error('Error:', error));
 })
 
-
-document.getElementById('fetchingEmployees').addEventListener('click', function() {
+//day1 button
+document.getElementById('day1').addEventListener('click', function() {
     // Send a POST request to the Flask backend
-    fetch('/trigger-function', {
+    fetch('/trigger-function-day1', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -92,6 +92,46 @@ document.getElementById('fetchingEmployees').addEventListener('click', function(
         document.getElementById('result').textContent = data.message;
     })
     .catch(error => console.error('Error:', error));
+    window.location.href = '/day1';  // Redirect to the /employees route
+})
+
+
+//day2 button
+document.getElementById('day2').addEventListener('click', function() {
+    // Send a POST request to the Flask backend
+    fetch('/trigger-function-day2', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({})  // You can send data to the backend if needed
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Update the page with the response
+        document.getElementById('result').textContent = data.message;
+    })
+    .catch(error => console.error('Error:', error));
+    window.location.href = '/day2';  // Redirect to the /employees route
+})
+
+//day3 button
+document.getElementById('day3').addEventListener('click', function() {
+    // Send a POST request to the Flask backend
+    fetch('/trigger-function-day3', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({})  // You can send data to the backend if needed
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Update the page with the response
+        document.getElementById('result').textContent = data.message;
+    })
+    .catch(error => console.error('Error:', error));
+    window.location.href = '/day3';  // Redirect to the /employees route
 })
 
 document.getElementById('fetchingEmployees').addEventListener('click', function() {
@@ -134,3 +174,5 @@ document.getElementById('fetchingEmployees').addEventListener('click', function(
 document.getElementById('viewEmployeesBtn').addEventListener('click', function() {
     window.location.href = '/employees';  // Redirect to the /employees route
 });
+
+
