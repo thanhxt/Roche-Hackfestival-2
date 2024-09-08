@@ -21,13 +21,13 @@ document.getElementById('searchEmployee').addEventListener('submit', async funct
 });
 
 function consumption(employee) {
-    return employee.distance + employee.food_emission + employee.room_emi;
+    return employee.sum_emi;
 }
 
 // get Top employees
 document.getElementById('fetchEmployeesBtn').addEventListener('click', async function() {
     // Send GET request to fetch employee data
-    const response = await fetch('http://127.0.0.1:5000/employees', {
+    const response = await fetch('http://127.0.0.1:5000/day3', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -59,7 +59,7 @@ document.getElementById('fetchEmployeesBtn').addEventListener('click', async fun
 });
 
 // trigger button to fetch employee2 with 1
-document.getElementById('fetchingEmployees').addEventListener('click', function() {
+document.getElementById('viewEmployeesBtn').addEventListener('click', function() {
     // Send a POST request to the Flask backend
     fetch('/trigger-function', {
         method: 'POST',
@@ -74,6 +74,7 @@ document.getElementById('fetchingEmployees').addEventListener('click', function(
         document.getElementById('result').textContent = data.message;
     })
     .catch(error => console.error('Error:', error));
+    window.location.href = '/day3';  // Redirect to the /employees route
 })
 
 //day1 button
@@ -169,10 +170,10 @@ document.getElementById('fetchingEmployees').addEventListener('click', function(
 })
 
 
-
+/*
 // Handle redirection to the Employees page when the "View All Employees" button is clicked
 document.getElementById('viewEmployeesBtn').addEventListener('click', function() {
     window.location.href = '/employees';  // Redirect to the /employees route
 });
-
+*/
 
