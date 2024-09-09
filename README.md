@@ -19,3 +19,7 @@ Since we only use a simple UI you only need to install the backend packages.
 - Flask
 - HTML/CSS
 - Javascript
+
+##
+- Viet Anh Vu
+- Thanh Xuan Tran
